@@ -10,13 +10,33 @@ import UIKit
 protocol AdicionarRefeicaoDelegate {
     func add(_ refeicao: Refeicao)
 }
-
-class ViewController: UIViewController {
+   // Mark: - Atributos
+class ViewController: UIViewController, UITableViewDataSource {
     
+    
+   // Mark: - IBOutlet
     var delegate: AdicionarRefeicaoDelegate?
+    var itens: [String] = ["Molho de tomate","Queijo","Molho apimentado","Manjericao"]
     
     @IBOutlet  var nameTextField: UITextField?
     @IBOutlet weak var felicidadeTextField: UITextField?
+    
+    // Mark : - UITableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return itens.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let celula = UITableViewCell(style: .default, reuseIdentifier: nil)
+        
+        let linhaDaTabela = indexPath.row
+        let item = itens[linhaDaTabela]
+        
+        celula.textLabel?.text = item
+        
+        return celula
+    }
+    // MArk: - IBActions
     
     @IBAction func adicionar(_ sender: Any) {
         
