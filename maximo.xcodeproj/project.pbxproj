@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B60C7ED926AF47ED008F2F6B /* AdicionarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60C7ED726AF47ED008F2F6B /* AdicionarViewController.xib */; };
+		B60C7EDC26AF4818008F2F6B /* AdicionarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C7EDB26AF4818008F2F6B /* AdicionarViewController.swift */; };
 		B640B65C269505570044D58A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B640B65B269505570044D58A /* Item.swift */; };
 		B640B66426964CA30044D58A /* Refeicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B640B65F269507C90044D58A /* Refeicao.swift */; };
 		B640B6B326A8A42E0044D58A /* RefeicoesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B640B6B226A8A42E0044D58A /* RefeicoesTableViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B60C7ED726AF47ED008F2F6B /* AdicionarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AdicionarViewController.xib; path = "../../../../OneDrive - Accenture/AdicionarViewController.xib"; sourceTree = "<group>"; };
+		B60C7EDB26AF4818008F2F6B /* AdicionarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarViewController.swift; sourceTree = "<group>"; };
 		B640B65B269505570044D58A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B640B65F269507C90044D58A /* Refeicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refeicao.swift; sourceTree = "<group>"; };
 		B640B6B226A8A42E0044D58A /* RefeicoesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefeicoesTableViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 			children = (
 				B697CCA3265BED730068759E /* ViewController.swift */,
 				B640B6B226A8A42E0044D58A /* RefeicoesTableViewController.swift */,
+				B60C7EDB26AF4818008F2F6B /* AdicionarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -66,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				B697CCA5265BED730068759E /* Main.storyboard */,
+				B60C7ED726AF47ED008F2F6B /* AdicionarViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B697CCAC265BED770068759E /* LaunchScreen.storyboard in Resources */,
+				B60C7ED926AF47ED008F2F6B /* AdicionarViewController.xib in Resources */,
 				B697CCA9265BED770068759E /* Assets.xcassets in Resources */,
 				B697CCA7265BED730068759E /* Main.storyboard in Resources */,
 			);
@@ -173,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B640B65C269505570044D58A /* Item.swift in Sources */,
+				B60C7EDC26AF4818008F2F6B /* AdicionarViewController.swift in Sources */,
 				B640B66426964CA30044D58A /* Refeicao.swift in Sources */,
 				B697CCA4265BED730068759E /* ViewController.swift in Sources */,
 				B640B6B326A8A42E0044D58A /* RefeicoesTableViewController.swift in Sources */,
