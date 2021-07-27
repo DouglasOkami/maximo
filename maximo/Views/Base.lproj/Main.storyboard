@@ -126,6 +126,7 @@
                     <navigationItem key="navigationItem" id="CQE-wg-Bjh"/>
                     <connections>
                         <outlet property="felicidadeTextField" destination="brU-qx-7ue" id="nij-J2-cmU"/>
+                        <outlet property="itensTableView" destination="QNQ-QG-tJl" id="QGk-Ux-fRC"/>
                         <outlet property="nameTextField" destination="CmX-Mp-Apz" id="c73-Mw-rGz"/>
                     </connections>
                 </viewController>

@@ -28,7 +28,7 @@ class RefeicoesTableViewController: UITableViewController, AdicionarRefeicaoDele
         if segue.identifier == "Adicionar" {
             if let viewController = segue.destination as? ViewController {
                 viewController.delegate = self
-     }
+      }
     }
   }
 }

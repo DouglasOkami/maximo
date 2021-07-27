@@ -11,10 +11,15 @@ protocol AdicionarRefeicaoDelegate {
     func add(_ refeicao: Refeicao)
 }
    // MARK: - Atributos
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AdicionarItensDelegate {
+    
+    //MARK: -IBOutlet
+    
+    @IBOutlet weak var itensTableView: UITableView!
     
     
-   // MARK: - IBOutlet
+    
+   // MARK: - Atributos
     var delegate: AdicionarRefeicaoDelegate?
 //    var itens: [String] = ["Molho de tomate","Queijo","Molho apimentado","Manjericao"]
     var itens: [Item] = [Item(nome: "Molho de tomate", calorias: 40.0),Item(nome: "Queijo", calorias: 40.0),Item(nome: "Molho de pimenta", calorias: 40.0),Item(nome: "Manjericao", calorias: 40.0)]
@@ -32,10 +37,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @objc func adicionarItens() {
- let adicionarItensViewController = AdicionarViewController()
+        let adicionarItensViewController = AdicionarViewController(delegate: self )
         navigationController?.pushViewController(adicionarItensViewController, animated: true)
     }
-    
+    func Add(_ item: Item) {
+        itens.append(item)
+        itensTableView.reloadData()
+    }
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itens.count
@@ -96,4 +104,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         delegate?.add(refeicao)
         navigationController?.popViewController(animated: true)
     }
-}
+  }
+
