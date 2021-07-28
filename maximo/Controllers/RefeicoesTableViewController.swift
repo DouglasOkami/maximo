@@ -8,7 +8,7 @@
 import UIKit
 
 class RefeicoesTableViewController: UITableViewController, AdicionarRefeicaoDelegate{
-    var refeicoes = [Refeicao(nome: "Macarrão", felicidade: 4),Refeicao(nome: "Comida Japonesa", felicidade: 4) , Refeicao(nome: "Pizza", felicidade: 5)]
+    var refeicoes = [Refeicao(nome: "Macarrão", felicidade: 4),Refeicao(nome: "Comida Japonesa", felicidade: 3) , Refeicao(nome: "Pizza", felicidade: 5)]
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return refeicoes.count
@@ -33,13 +33,10 @@ class RefeicoesTableViewController: UITableViewController, AdicionarRefeicaoDele
             let celula = gesture.view as! UITableViewCell
             
             guard let indexPath = tableView.indexPath(for: celula) else { return }
-            
             let refeicao = refeicoes[indexPath.row]
             
-            let alerta = UIAlertController(title: refeicao.nome, message: "felicidade:\(refeicao.felicidade)", preferredStyle: .alert)
-
+            let alerta = UIAlertController(title: refeicao.nome, message: refeicao.detalhes(), preferredStyle: .alert)
             let botaoCancelar = UIAlertAction(title: "ok", style: .cancel, handler: nil)
-            
             alerta.addAction(botaoCancelar)
             
             present(alerta, animated: true, completion: nil)

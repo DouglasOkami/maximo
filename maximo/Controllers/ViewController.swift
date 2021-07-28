@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //MARK: -IBOutlet
     
-    @IBOutlet weak var itensTableView: UITableView!
+    @IBOutlet weak var itensTableView: UITableView?
     
     
     
@@ -42,8 +42,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     func Add(_ item: Item) {
         itens.append(item)
-        itensTableView.reloadData()
+        if let tableView = itensTableView {
+            tableView.reloadData()
+        } else {
+            Alerta(controller: self).exibe(mensagem: "Erro ao atualizar a tabela")
+        }
     }
+    
+    
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itens.count

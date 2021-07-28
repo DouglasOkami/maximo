@@ -48,8 +48,12 @@ class AdicionarViewController: UIViewController {
         
         if let numeroDeCalorias = Double(calorias) {
             let item = Item(nome: nome, calorias: numeroDeCalorias)
+            
             delegate?.Add(item)
             navigationController?.popViewController(animated: true)
         }
     }
+    
+    // optional chaining 
+
 }
