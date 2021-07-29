@@ -11,9 +11,7 @@ class RefeicoesTableViewController: UITableViewController, AdicionarRefeicaoDele
     var refeicoes = [Refeicao(nome: "Macarrão", felicidade: 4),Refeicao(nome: "Comida Japonesa", felicidade: 3) , Refeicao(nome: "Pizza", felicidade: 5)]
     
     override func viewDidLoad() {
-        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let caminho = diretorio.appendingPathComponent("refeicao")
-        
+        guard let caminho = recuperaCaminho() else { return }
         do {
             let dados = try Data(contentsOf: caminho)
             guard let refeicoesSalvas = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as? Array<Refeicao> else { return }
@@ -21,6 +19,13 @@ class RefeicoesTableViewController: UITableViewController, AdicionarRefeicaoDele
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    func recuperaCaminho() -> URL? {
+        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil}
+        let caminho = diretorio.appendingPathComponent("refeicao")
+        
+        return caminho
     }
     
     
@@ -40,9 +45,8 @@ class RefeicoesTableViewController: UITableViewController, AdicionarRefeicaoDele
     func add(_ refeicao: Refeicao){
         refeicoes.append(refeicao)
         tableView.reloadData()
-        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let caminho = diretorio.appendingPathComponent("refeicao")
         
+        guard let caminho = recuperaCaminho() else { return }
         do{
             let dados = try NSKeyedArchiver.archivedData(withRootObject: refeicoes, requiringSecureCoding: false)
             try dados.write(to: caminho)
@@ -60,6 +64,7 @@ class RefeicoesTableViewController: UITableViewController, AdicionarRefeicaoDele
             RemoveRefeicaoViewController(controller: self).exibe(refeicao, handler: {
                 alerta in
                 self.refeicoes.remove(at: indexPath.row)
+                // colocar código para remover o item do arquivo
                 self.tableView.reloadData()
             })
         }
