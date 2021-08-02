@@ -8,10 +8,11 @@
 import UIKit
 
 class RefeicoesTableViewController: UITableViewController, AdicionarRefeicaoDelegate{
+    private let dao = RefeicaoDao()
     var refeicoes: [Refeicao] = []
     
     override func viewDidLoad() {
-        refeicoes = RefeicaoDao().recupera()
+        refeicoes = dao.recupera()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,7 +31,7 @@ class RefeicoesTableViewController: UITableViewController, AdicionarRefeicaoDele
     func add(_ refeicao: Refeicao){
         refeicoes.append(refeicao)
         tableView.reloadData()
-        RefeicaoDao().save(refeicoes)
+        dao.save(refeicoes)
 }
     
     @objc func mostrarDetalhes(_ gesture: UILongPressGestureRecognizer) {
@@ -39,11 +40,10 @@ class RefeicoesTableViewController: UITableViewController, AdicionarRefeicaoDele
             guard let indexPath = tableView.indexPath(for: celula) else { return }
             let refeicao = refeicoes[indexPath.row]
             
-            RemoveRefeicaoViewController(controller: self).exibe(refeicao, handler: {
-                alerta in
-                self.refeicoes.remove(at: indexPath.row)
-                // colocar código para remover o item do arquivo
-                self.tableView.reloadData()
+            RemoveRefeicaoViewController(controller: self).exibe(refeicao, handler: { [self] alerta in
+                refeicoes.remove(at: indexPath.row)
+                dao.save(refeicoes)
+                tableView.reloadData()
             })
         }
     }
